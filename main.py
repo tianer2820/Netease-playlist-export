@@ -52,7 +52,7 @@ def qr_login(s: requests.Session, api_url: str):
             exit(1)
 
     # wait until the server login status is updated
-    while not check_login(s):
+    while not check_login(s, api_url):
         time.sleep(0.5)
     
 
@@ -149,14 +149,16 @@ def export_playlists(
         simplified_list = []
         for t in tracks:
             track_name = t['name']
-            artist_name = t['ar'][0]['name']
+            artists_names = []
+            for artist in t['ar']:
+                artists_names.append(artist['name'])
             album_name = t['al']['name']
             cd_name = t['cd']
 
             simplified_list.append(
                 {
                 'track': track_name,
-                'artist': artist_name,
+                'artists': artists_names,
                 'album': album_name,
                 'cd': cd_name,
                 }
