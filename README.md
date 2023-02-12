@@ -18,4 +18,6 @@ This project depends on https://github.com/Binaryify/NeteaseCloudMusicApi
 
 ### Match Json Playlist to local files (Create m3u8)
 
-TODO
+run `python3 match_local.py`. With 0 arguments, there will be a simple CLI asking for needed paths. Or you can also type `python3 match_local.py -h` to see how to use it with command line arguments.
+
+The script takes a folder containing mp3 files, one or more json playlist files, match the music to playlists and export m3u8 files to an output folder.
