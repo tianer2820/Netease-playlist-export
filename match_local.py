@@ -127,9 +127,11 @@ def match_playlist(playlist_file: str, music_list: list[MusicFile]) -> tuple[int
     num_found = len(found_list)
     num_not_found = len(not_found_list)
 
-    found_part = "\r\n".join(found_list)
-    not_found_part = "\r\n".join(not_found_list)
-    full = found_part + "\r\n\r\n# Below is a list of not found tracks\r\n\r\n" + not_found_part
+    sep = os.linesep
+
+    found_part = sep.join(found_list)
+    not_found_part = sep.join(not_found_list)
+    full = found_part + sep + sep + "# Below is a list of not found tracks" + sep + sep + not_found_part
 
     return num_found, num_not_found, full
 
